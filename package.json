@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "prettier:check": "prettier --check ./lib/*.js ./*.js",
-    "prettier:diff": "prettier -l ./lib/*.js ./*.js"
+    "prettier:diff": "prettier -l ./lib/*.js ./*.js",
     "prettier:fix": "prettier --write ./lib/*.js ./*.js"
   },
   "author": "",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.3",
-    "prettier": "1.18.2"
+    "prettier": "^1.18.2",
+    "retire": "^2.0.3"
   }
 }
