@@ -1,12 +1,12 @@
 const express = require("express");
-const path = require('path');
+const path = require("path");
 
 const app = express();
 const router = express.Router();
 const upload = require("./lib/middleware");
 const Resize = require("./lib/resize");
 
-router.get("/", async function (req, res) {
+router.get("/", async function(req, res) {
   await res.render("index");
 });
 
