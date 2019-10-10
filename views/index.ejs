@@ -2,17 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>EJS Engine</title>
+    <title>Resize an image to be a square</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.purple-teal.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </head>
   <body>
-      <p>Image Upload</p>
-      <form method="post" action="upload/post" enctype="multipart/form-data">
-        <input type="file" name="image" /><br /><br />
+      <div style="margin-left:30px">
+        <h3>Turn an image into a square</h3>
+        <form method="post" action="upload/post" enctype="multipart/form-data">
+          <div><input type="file" name="image" /></div>
 
-        <label for="size">Square Size</label>
-        <input type="number" name="size" /><br />
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label class="mdl-textfield__label" for="size">Square Size</label>
+            <input type="number" class="mdl-textfield__input" name="size" />
+          </div>
 
-        <button type="submit" name="upload">Upload</button>
-      </form>
+          <div>
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" name="upload">Upload</button>
+          </div>
+        </form>
+      </div>
   </body>
 </html>
