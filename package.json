@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "prettier:check": "prettier --check ./lib/*.js ./*.js",
-    "prettier:diff": "prettier -l ./lib/*.js ./*.js",
-    "prettier:fix": "prettier --write ./lib/*.js ./*.js"
+    "format:check": "prettier --check ./lib/*.js ./*.js",
+    "format:diff": "prettier -l ./lib/*.js ./*.js",
+    "format:fix": "prettier --write ./lib/*.js ./*.js",
+    "deps:scan": "retire --path ./node_modules -v"
   },
   "author": "",
   "license": "ISC",
