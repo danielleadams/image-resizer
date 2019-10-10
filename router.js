@@ -10,17 +10,24 @@ router.get("/", async function (req, res) {
   await res.render("index");
 });
 
-router.post("/post", upload.single("image"), async (req, res) => {
+router.post("/post", upload.single("image"), async ({ body, file }, res) => {
   const imagePath = path.join(__dirname, "/public/images");
   const fileUpload = new Resize(imagePath);
+  const size = parseInt(body.size);
 
-  if (!req.file) {
-    res.status(401).json({
+  if (!file) {
+    res.status(422).json({
       error: "Please provide an image"
     });
   }
 
-  const filename = await fileUpload.save(req.file.buffer);
+  if (!size) {
+    res.status(422).json({
+      error: "Please provide an square size"
+    });
+  }
+
+  const filename = await fileUpload.save(file, size);
   await res.redirect(`/images/${filename}`);
 });
 
