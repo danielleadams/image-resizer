@@ -1,7 +1,7 @@
 {
   "name": "image-resizer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web app for resizing images for security testing",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
@@ -10,8 +10,8 @@
     "format:fix": "prettier --write ./lib/*.js ./*.js",
     "deps:scan": "retire --path ./node_modules -v"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "adamzdanielle@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^2.7.1",
