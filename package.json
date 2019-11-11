@@ -4,6 +4,8 @@
   "description": "Web app for resizing images for security testing",
   "main": "index.js",
   "scripts": {
+    "db:migrate": "node ./scripts/create_db.js",
+    "db:reset": "rm ./db/local.db",
     "start": "nodemon server.js",
     "format:check": "prettier --check ./lib/*.js ./*.js",
     "format:diff": "prettier -l ./lib/*.js ./*.js",
@@ -17,7 +19,10 @@
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "multer": "^1.4.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "sharp": "^0.23.1",
+    "sqlite3": "^4.1.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {

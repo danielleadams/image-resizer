@@ -9,10 +9,10 @@ const router = require("./router");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "/public")));
-app.use("/upload", router);
+app.use("/", router);
 
 app.set("view engine", "ejs");
 
 app.listen(port, () => {
-  console.log(`Server running on ${port}. Ready for images...`);
+  console.log(`Server running on ${port}. Visit localhost:3000/upload. Ready for images...`);
 });
