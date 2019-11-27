@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const ejs = require("ejs");
+const string = require ("string-sanitizer");
 
 const app = express();
 const router = express.Router();
@@ -16,8 +17,8 @@ router.get("/upload", async (_, res) => {
 router.post("/upload", upload.single("image"), async ({ body, file }, res) => {
   const imagePath = path.join(__dirname, "/public/images");
   const fileUpload = new Resize(imagePath);
-  const size = parseInt(body.size);
-  const caption = body.caption;
+  const size = parseInt(string.sanitize(body.size));
+  const caption = string.sanitize(body.caption);
 
   if (!file) {
     res.status(422).json({
@@ -40,13 +41,14 @@ router.get("/login", async (_, res) => {
 });
 
 router.post("/login", async ({ body }, res) => {
-  var user = new User(body.email, body.password);
-
-  if (user.find()) {
-    await res.render("index");
-  } else {
-    await res.sendStatus(401);
-  }
+  var user = new User();
+  user.find(string.sanitize(body.email), string.sanitize(body.password), async (match) => {
+    if (match) {
+      await res.render("index");
+    } else {
+      await res.sendStatus(401);
+    }
+  });
 });
 
 router.get("/create", async (_, res) => {
@@ -54,7 +56,7 @@ router.get("/create", async (_, res) => {
 });
 
 router.post("/create", async ({ body }, res) => {
-  new User(body.email, body.password).create();
+  new User().create(string.sanitize(body.email), string.sanitize(body.password));
   await res.render("login");
 });
 
